@@ -6,25 +6,14 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class SilverBankAccountTest {
+public class SilverBankAccountTest extends CoreBankAccountTest {
 
     private final BankAccountFactory factory = new BankAccountFactory();
-    private BankAccount account;
 
+    @Override
     @BeforeEach
     void init(){
         this.account = this.factory.createSilverBankAccount();
-    }
-
-    @Test
-    public void testInitiallyEmpty() {
-        assertEquals(0, this.account.getBalance());
-    }
-
-    @Test
-    public void testCanDeposit() {
-        this.account.deposit(1000);
-        assertEquals(1000, this.account.getBalance());
     }
 
     @Test
