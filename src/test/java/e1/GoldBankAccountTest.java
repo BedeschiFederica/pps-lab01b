@@ -28,4 +28,10 @@ public class GoldBankAccountTest extends CoreBankAccountTest {
         assertDoesNotThrow(() -> this.account.withdraw(1200));
     }
 
+    @Test
+    public void testCannotWithdrawMoreThanAllowed(){
+        this.account.deposit(1000);
+        assertThrows(IllegalStateException.class, () -> this.account.withdraw(1700));
+    }
+
 }
