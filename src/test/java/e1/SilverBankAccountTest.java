@@ -8,11 +8,12 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class SilverBankAccountTest {
 
+    private final BankAccountFactory factory = new BankAccountFactory();
     private BankAccount account;
 
     @BeforeEach
     void init(){
-        this.account = new NoOverdraftBankAccount(new ConstantFeeBankAccount(new CoreBankAccount()));
+        this.account = this.factory.createSilverBankAccount();
     }
 
     @Test
