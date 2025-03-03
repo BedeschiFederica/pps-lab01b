@@ -1,21 +1,16 @@
 package e1;
 
-public class SilverBankAccount implements BankAccount {
+public class SilverBankAccount extends DecoratorBankAccount {
 
-    private BankAccount base = new CoreBankAccount();
-
-    public int getBalance() {
-        return base.getBalance();
+    public SilverBankAccount(BankAccount base) {
+        super(base);
     }
 
-    public void deposit(int amount) {
-        base.deposit(amount);
-    }
-
-    public void withdraw(int amount) {
-        if (this.getBalance() < amount){
+    @Override
+    public void withdraw(final int amount) {
+        if (this.base.getBalance() < amount){
             throw new IllegalStateException();
         }
-        base.withdraw(amount + 1);
+        this.base.withdraw(amount + 1);
     }
 }
