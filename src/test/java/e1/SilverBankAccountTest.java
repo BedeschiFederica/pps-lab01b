@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class SilverBankAccountTest {
 
-    private SilverBankAccount account;
+    private BankAccount account;
 
     @BeforeEach
     void init(){
