@@ -2,7 +2,7 @@ package e1;
 
 public class SilverBankAccount implements BankAccount {
 
-    private CoreBankAccount base = new CoreBankAccount();
+    private BankAccount base = new CoreBankAccount();
 
     public int getBalance() {
         return base.getBalance();
