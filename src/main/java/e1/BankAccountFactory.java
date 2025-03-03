@@ -6,4 +6,7 @@ public class BankAccountFactory {
         return new NoOverdraftBankAccount(new ConstantFeeBankAccount(new CoreBankAccount()));
     }
 
+    public BankAccount createGoldBankAccount() {
+        return new OverdraftBankAccount(new CoreBankAccount());
+    }
 }
