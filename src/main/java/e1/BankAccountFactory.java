@@ -11,6 +11,6 @@ public class BankAccountFactory {
     }
 
     public BankAccount createBronzeBankAccount() {
-        return new NoOverdraftBankAccount(new CoreBankAccount());
+        return new NoOverdraftBankAccount(new ConditionalFeeBankAccount(new CoreBankAccount()));
     }
 }

@@ -27,6 +27,13 @@ public class BronzeBankAccountTest extends CoreBankAccountTest {
     }
 
     @Test
+    public void testCanWithdrawLargeAmount() {
+        this.account.deposit(DEPOSIT_AMOUNT);
+        this.account.withdraw(200);
+        assertEquals(DEPOSIT_AMOUNT - 200 - 1, this.account.getBalance());
+    }
+
+    @Test
     public void testCannotWithdrawMoreThanAvailable() {
         this.account.deposit(DEPOSIT_AMOUNT);
         assertThrows(IllegalStateException.class, () -> this.account.withdraw(1200));
