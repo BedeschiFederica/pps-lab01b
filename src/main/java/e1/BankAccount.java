@@ -4,6 +4,7 @@ public interface BankAccount {
 
     /**
      * Returns the current balance of the bank account.
+     *
      * @return the current balance
      */
     int getBalance();
@@ -12,6 +13,7 @@ public interface BankAccount {
      * Allows the deposit of an amount on the account.
      *
      * @param amount the amount of the deposit
+     * @throws IllegalArgumentException if the amount is negative
      */
     void deposit(int amount);
 

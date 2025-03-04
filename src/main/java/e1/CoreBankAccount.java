@@ -9,6 +9,9 @@ class CoreBankAccount implements BankAccount {
     }
 
     public void deposit(final int amount) {
+        if (amount < 0) {
+            throw new IllegalArgumentException("Can't deposit a negative amount.");
+        }
         this.balance = this.balance + amount;
     }
 

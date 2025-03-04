@@ -4,6 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class CoreBankAccountTest {
 
@@ -25,5 +26,10 @@ public class CoreBankAccountTest {
     public void testCanDeposit() {
         this.account.deposit(DEPOSIT_AMOUNT);
         assertEquals(DEPOSIT_AMOUNT, this.account.getBalance());
+    }
+
+    @Test
+    public void testCantDepositNegativeAmount() {
+        assertThrows(IllegalArgumentException.class, () -> this.account.deposit(-100));
     }
 }
