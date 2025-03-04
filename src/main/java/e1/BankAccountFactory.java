@@ -9,4 +9,8 @@ public class BankAccountFactory {
     public BankAccount createGoldBankAccount() {
         return new OverdraftBankAccount(new CoreBankAccount());
     }
+
+    public BankAccount createBronzeBankAccount() {
+        return new NoOverdraftBankAccount(new CoreBankAccount());
+    }
 }
