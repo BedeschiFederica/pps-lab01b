@@ -26,4 +26,10 @@ public class BronzeBankAccountTest extends CoreBankAccountTest {
         assertEquals(DEPOSIT_AMOUNT - SMALL_WITHDRAW_AMOUNT, this.account.getBalance());
     }
 
+    @Test
+    public void testCannotWithdrawMoreThanAvailable(){
+        this.account.deposit(1000);
+        assertThrows(IllegalStateException.class, () -> this.account.withdraw(1200));
+    }
+
 }
