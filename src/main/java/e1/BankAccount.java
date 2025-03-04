@@ -21,6 +21,7 @@ public interface BankAccount {
      * Allows the withdrawal of an amount from the account.
      *
      * @param amount the amount of the withdrawal
+     * @throws IllegalArgumentException if the amount is negative
      */
     void withdraw(int amount);
 

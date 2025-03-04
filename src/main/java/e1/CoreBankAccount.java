@@ -16,6 +16,9 @@ class CoreBankAccount implements BankAccount {
     }
 
     public void withdraw(final int amount) {
+        if (amount < 0) {
+            throw new IllegalArgumentException("Can't withdraw a negative amount.");
+        }
         this.balance = this.balance - amount;
     }
 }

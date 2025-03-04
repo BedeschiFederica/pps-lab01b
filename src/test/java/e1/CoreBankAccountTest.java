@@ -33,4 +33,10 @@ public class CoreBankAccountTest {
         final int negativeAmount = -100;
         assertThrows(IllegalArgumentException.class, () -> this.account.deposit(negativeAmount));
     }
+
+    @Test
+    public void testCantWithdrawNegativeAmount() {
+        final int negativeAmount = -100;
+        assertThrows(IllegalArgumentException.class, () -> this.account.deposit(negativeAmount));
+    }
 }
