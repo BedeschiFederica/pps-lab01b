@@ -2,14 +2,15 @@ package e1;
 
 public class ConstantFeeBankAccount extends DecoratorBankAccount {
 
-    private static final int FEE = 1;
+    private final int fee;
 
-    public ConstantFeeBankAccount(BankAccount base) {
+    public ConstantFeeBankAccount(final int fee, BankAccount base) {
         super(base);
+        this.fee = fee;
     }
 
     @Override
     public void withdraw(final int amount) {
-        this.base.withdraw(amount + FEE);
+        this.base.withdraw(amount + this.fee);
     }
 }

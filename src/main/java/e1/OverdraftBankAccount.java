@@ -2,15 +2,16 @@ package e1;
 
 public class OverdraftBankAccount extends DecoratorBankAccount {
 
-    private static final int MAX_OVERDRAFT = 500;
+    private final int maxOverdraft;
 
-    public OverdraftBankAccount(BankAccount base) {
+    public OverdraftBankAccount(final int maxOverdraft, final BankAccount base) {
         super(base);
+        this.maxOverdraft = maxOverdraft;
     }
 
     @Override
     public void withdraw(final int amount) {
-        if (this.base.getBalance() < amount - MAX_OVERDRAFT) {
+        if (this.base.getBalance() < amount - this.maxOverdraft) {
             throw new IllegalStateException();
         }
         this.base.withdraw(amount);

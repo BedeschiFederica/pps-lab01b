@@ -3,14 +3,21 @@ package e1;
 public class BankAccountFactory {
 
     public BankAccount createSilverBankAccount() {
-        return new NoOverdraftBankAccount(new ConstantFeeBankAccount(new CoreBankAccount()));
+        final int maxOverdraft = 0;
+        final int thresholdAmount = 0;
+        final int fee = 1;
+        return new OverdraftBankAccount(maxOverdraft, new FeeBankAccount(thresholdAmount, fee, new CoreBankAccount()));
     }
 
     public BankAccount createGoldBankAccount() {
-        return new OverdraftBankAccount(new CoreBankAccount());
+        final int maxOverdraft = 500;
+        return new OverdraftBankAccount(maxOverdraft, new CoreBankAccount());
     }
 
     public BankAccount createBronzeBankAccount() {
-        return new NoOverdraftBankAccount(new ConditionalFeeBankAccount(new CoreBankAccount()));
+        final int maxOverdraft = 0;
+        final int thresholdAmount = 100;
+        final int fee = 1;
+        return new OverdraftBankAccount(maxOverdraft, new FeeBankAccount(thresholdAmount, fee, new CoreBankAccount()));
     }
 }
