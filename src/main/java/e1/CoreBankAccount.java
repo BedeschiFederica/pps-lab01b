@@ -8,17 +8,19 @@ class CoreBankAccount implements BankAccount {
         return this.balance;
     }
 
-    public void deposit(final int amount) {
+    private void checkNegativeAmount(final int amount) {
         if (amount < 0) {
             throw new IllegalArgumentException("Can't deposit a negative amount.");
         }
+    }
+
+    public void deposit(final int amount) {
+        checkNegativeAmount(amount);
         this.balance = this.balance + amount;
     }
 
     public void withdraw(final int amount) {
-        if (amount < 0) {
-            throw new IllegalArgumentException("Can't withdraw a negative amount.");
-        }
+        checkNegativeAmount(amount);
         this.balance = this.balance - amount;
     }
 }

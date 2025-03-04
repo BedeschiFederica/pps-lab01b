@@ -9,6 +9,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 public class CoreBankAccountTest {
 
     private static final int DEPOSIT_AMOUNT = 1000;
+    private static final int NEGATIVE_AMOUNT = -100;
 
     protected BankAccount account;
 
@@ -30,13 +31,11 @@ public class CoreBankAccountTest {
 
     @Test
     public void testCantDepositNegativeAmount() {
-        final int negativeAmount = -100;
-        assertThrows(IllegalArgumentException.class, () -> this.account.deposit(negativeAmount));
+        assertThrows(IllegalArgumentException.class, () -> this.account.deposit(NEGATIVE_AMOUNT));
     }
 
     @Test
     public void testCantWithdrawNegativeAmount() {
-        final int negativeAmount = -100;
-        assertThrows(IllegalArgumentException.class, () -> this.account.deposit(negativeAmount));
+        assertThrows(IllegalArgumentException.class, () -> this.account.deposit(NEGATIVE_AMOUNT));
     }
 }
