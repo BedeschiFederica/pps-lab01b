@@ -9,6 +9,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 public class BronzeBankAccountTest extends CoreBankAccountTest {
 
     private static final int DEPOSIT_AMOUNT = 1000;
+    private static final int FEE = 1;
 
     private final BankAccountFactory factory = new BankAccountFactory();
 
@@ -28,15 +29,17 @@ public class BronzeBankAccountTest extends CoreBankAccountTest {
 
     @Test
     public void testCanWithdrawLargeAmount() {
+        final int largeWithdrawAmount = 200;
         this.account.deposit(DEPOSIT_AMOUNT);
-        this.account.withdraw(200);
-        assertEquals(DEPOSIT_AMOUNT - 200 - 1, this.account.getBalance());
+        this.account.withdraw(largeWithdrawAmount);
+        assertEquals(DEPOSIT_AMOUNT - largeWithdrawAmount - FEE, this.account.getBalance());
     }
 
     @Test
     public void testCannotWithdrawMoreThanAvailable() {
+        final int illegalWithdrawAmount = 1200;
         this.account.deposit(DEPOSIT_AMOUNT);
-        assertThrows(IllegalStateException.class, () -> this.account.withdraw(1200));
+        assertThrows(IllegalStateException.class, () -> this.account.withdraw(illegalWithdrawAmount));
     }
 
 }
