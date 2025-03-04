@@ -30,6 +30,7 @@ public class CoreBankAccountTest {
 
     @Test
     public void testCantDepositNegativeAmount() {
-        assertThrows(IllegalArgumentException.class, () -> this.account.deposit(-100));
+        final int negativeAmount = -100;
+        assertThrows(IllegalArgumentException.class, () -> this.account.deposit(negativeAmount));
     }
 }
